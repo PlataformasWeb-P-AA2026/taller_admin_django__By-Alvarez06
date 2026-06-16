@@ -75,8 +75,12 @@ WSGI_APPLICATION = "patrimonio.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "user",  # Se asigna por defecto al no existir POSTGRES_DB
+        "USER": "user",  # POSTGRES_USER del docker-compose
+        "PASSWORD": "password",  # POSTGRES_PASSWORD del docker-compose
+        "HOST": "localhost",  # Conexión desde fuera del contenedor
+        "PORT": "5434",  # Puerto expuesto en el mapeo "5434:5432"
     }
 }
 
